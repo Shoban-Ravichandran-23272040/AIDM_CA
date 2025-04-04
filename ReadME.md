@@ -140,8 +140,8 @@ Detailed results can be found in the `IF_Comp/output/` directory.
 
 ## Contributors
 
-- [Your Name]
-- [Your Teammate's Name]
+- [Shoban Ravichandran]
+- [Mehwish Mohammed Hanif Khatib]
 
 ## License
 
