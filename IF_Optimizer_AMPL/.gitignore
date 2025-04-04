@@ -1,0 +1,45 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# AMPL and optimization files
+*.dat
+*.mod
+!templates/*.mod
+
+# Log files
+*.log
+
+# Output images
+outputs/*.png
+
+# Keep output directory but ignore most of its content
+outputs/*
+!outputs/.gitkeep
+
+# OS specific files
+.DS_Store
+Thumbs.db

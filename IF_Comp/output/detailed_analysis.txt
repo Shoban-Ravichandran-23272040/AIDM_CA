@@ -1,0 +1,47 @@
+===== Summary of Results =====
+                      Optimization Correlation  Clustering Correlation  Optimization Tracking Error  Clustering Tracking Error
+Number of Stocks (q)                                                                                                          
+5                                     0.000000                0.801558                     0.154861                   0.105656
+10                                    0.951508                0.814009                     0.264559                   0.091423
+15                                    0.952773                0.881617                     0.263336                   0.073392
+20                                    0.954034                0.852221                     0.262155                   0.081469
+25                                    0.955338                0.884574                     0.260893                   0.072694
+30                                    0.956493                0.910225                     0.259585                   0.064986
+
+Best q for optimization approach: 30
+Best q for clustering approach: 30
+
+===== Detailed Analysis of Best Portfolios =====
+
+Optimization Approach - Best Portfolio:
+Selected stocks (30): AAPL, ACN, ADBE, ADP, AMZN, AVGO, AXP, BLK, BRK-B, COST, CRM, DIS, GOOGL, GS, HD, HON, INTU, ISRG, LIN, MA, META, MS, MSFT, NVDA, QCOM, SBUX, SPGI, SYK, TXN, V
+
+Top 10 weights:
+  ACN: 0.1000
+  AMZN: 0.1000
+  BLK: 0.1000
+  GOOGL: 0.1000
+  AAPL: 0.1000
+  INTU: 0.1000
+  MSFT: 0.1000
+  NVDA: 0.1000
+  TXN: 0.1000
+  AVGO: 0.0800
+
+Clustering Approach - Best Portfolio:
+Selected stocks (30): CCI, ADBE, MRK, CSCO, NVDA, PM, XOM, INTC, TSLA, MA, PYPL, ZTS, MSFT, META, KO, T, AVGO, ORCL, CI, VZ, BAC, DIS, LLY, LIN, NFLX, CHTR, USB, RTX, AMZN, IBM
+
+Top 10 weights:
+  CCI: 0.0333
+  ADBE: 0.0333
+  MRK: 0.0333
+  CSCO: 0.0333
+  NVDA: 0.0333
+  PM: 0.0333
+  XOM: 0.0333
+  INTC: 0.0333
+  TSLA: 0.0333
+  MA: 0.0333
+
+Number of common stocks between approaches: 9
+Common stocks: AMZN, MA, DIS, ADBE, LIN, MSFT, META, AVGO, NVDA
