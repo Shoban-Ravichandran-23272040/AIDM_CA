@@ -1,0 +1,151 @@
+# Video Presentation Script: Creating an Index Fund Using AI-Driven Decision-Making Approaches
+
+## Introduction [Team Member 1] - (1:00)
+
+Hello everyone, we're [Your Name] and [Your Teammate's Name], and today we'll be presenting our project on creating an index fund using AI-driven decision-making approaches.
+
+In this project, we tackled the challenge of constructing an index fund that tracks the S&P 100 using fewer than 100 stocks. Our goal was to select a subset of stocks and determine their optimal weights to achieve performance as similar as possible to the benchmark across different time horizons, from one quarter to a full year.
+
+The parameter q, representing the number of stocks in our index fund, was a key variable we experimented with. We tested values ranging from 5 to 30 stocks to analyze how portfolio size affects tracking performance.
+
+What makes this project particularly relevant is its potential to reduce costs, improve operational efficiency, and enhance liquidity for investors while maintaining performance similar to the full index.
+
+## Problem Definition [Team Member 1] - (1:30)
+
+We formulated this as an optimization problem with two key decision variables: binary selection variables determining which stocks to include, and continuous weight variables determining the allocation for each selected stock.
+
+The primary constraints included:
+- Selecting exactly q stocks
+- Weights summing to 1
+- Maximum weight limits per stock
+- Only investing in selected stocks
+
+For our objective function, we focused on maximizing the correlation between our fund and the benchmark while minimizing tracking error, which measures the standard deviation of return differences.
+
+To evaluate performance, we used several metrics:
+- Correlation with the benchmark
+- Tracking error
+- R-squared (variance explained)
+- Performance across multiple time horizons
+
+This problem is challenging due to its combinatorial nature and non-linear objective function. With 100 potential stocks, the number of possible combinations grows exponentially as q increases, necessitating sophisticated approaches.
+
+## Methodology - Optimization [Team Member 1] - (2:00)
+
+We implemented two distinct AI-driven approaches. Our first approach utilized mathematical optimization with AMPL (A Mathematical Programming Language).
+
+The AMPL model included:
+- Binary variables for stock selection
+- Continuous variables for weight allocation
+- An objective function balancing correlation maximization and risk minimization
+- Constraints ensuring exactly q stocks, weights summing to 1, and maximum weight limits
+
+We connected this with Python through the amplpy library, enabling us to:
+- Fetch historical stock data using yfinance
+- Calculate returns, correlations, and covariance matrices
+- Generate AMPL data files
+- Solve the optimization model using CPLEX
+- Evaluate the resulting portfolio's performance
+
+This approach leverages the power of mathematical programming to find optimal or near-optimal solutions, though it faces challenges including computational complexity and sensitivity to input parameters.
+
+## Methodology - Clustering [Team Member 2] - (2:00)
+
+Our second approach took a machine learning perspective, using K-means clustering to identify groups of similar stocks and selecting representatives from each cluster.
+
+We engineered four key features for clustering:
+- Correlation with the benchmark
+- Volatility (standard deviation of returns)
+- Average return
+- Beta relative to the benchmark
+
+After standardizing these features, we applied K-means with the number of clusters equal to q. From each cluster, we selected the stock closest to the centroid as the representative, resulting in exactly q stocks for our portfolio.
+
+For weight determination, we initially used equal weighting and later implemented a price-weighted approach, which gave more weight to higher-priced stocks within our selection.
+
+This clustering approach offers advantages in computational efficiency, interpretability, and natural diversification across market segments.
+
+## Implementation Details [Team Member 2] - (1:30)
+
+Our implementation used Python with several key libraries:
+- yfinance for data acquisition
+- pandas and numpy for data manipulation
+- scikit-learn for clustering algorithms
+- matplotlib for visualization
+- amplpy for optimization integration
+
+We structured our codebase into modular components:
+- The IF_Optimizer_AMPL directory contains our optimization approach
+- The IF_Cluster directory implements our clustering approach
+- The IF_Comp directory provides comparison utilities
+
+For both approaches, we followed a consistent pipeline:
+1. Data acquisition and preprocessing
+2. Model training on historical data
+3. Stock selection and weight determination
+4. Performance evaluation across multiple metrics and time horizons
+
+This modular design allows for easy experimentation with different parameters and facilitates fair comparison between approaches.
+
+## Results and Analysis [Team Member 2] - (1:30)
+
+Our experimental evaluation revealed several key insights:
+
+For correlation with the benchmark:
+- The optimization approach achieved higher correlation, reaching 0.956 at q=30
+- Correlation generally increased with higher q values for both approaches
+- The optimization approach failed to find a viable solution at q=5
+- Both approaches achieved impressive correlation (>0.9) at q=30
+
+For tracking error:
+- The clustering approach consistently achieved lower tracking error
+- The best tracking error was 0.065 for clustering at q=30
+- Optimization showed higher tracking error despite better correlation
+- Both approaches showed improving trends with higher q values
+
+Analysis of the selected portfolios revealed interesting differences:
+- The optimization approach concentrated weights at the maximum allowed (10%)
+- The clustering approach naturally diversified across more sectors
+- Only 30% of selected stocks overlapped between approaches
+- Both successfully tracked the benchmark using 70-90% fewer stocks
+
+## Time Horizon and Practical Applications [Team Member 1] - (1:00)
+
+We evaluated performance across different time horizons from 3 months to 1 year, finding:
+- Both approaches maintained consistent tracking performance across horizons
+- Short-term tracking (3 months) was slightly more challenging
+- The relative advantages of each approach persisted across all time horizons
+
+These findings have several practical applications:
+- ETF Construction: Fund providers can create efficient ETFs with reduced holdings
+- Personalized Indexing: Adapting the frameworks for customized index investing
+- Factor Tilting: Extending the approaches to emphasize specific investment factors
+- Educational Tool: Demonstrating the application of AI techniques in portfolio management
+
+## Challenges and Future Work [Team Member 1] - (0:30)
+
+Despite promising results, we encountered several challenges:
+- Data limitations and handling of missing values
+- Computational complexity, particularly for the optimization approach
+- Parameter sensitivity affecting performance
+
+For future improvements, we envision:
+- Developing hybrid approaches combining clustering and optimization
+- Enhancing feature engineering with additional financial indicators
+- Implementing dynamic rebalancing strategies
+- Incorporating transaction costs and turnover constraints
+- Exploring alternative machine learning methods beyond K-means
+
+## Conclusion [Team Member 2] - (1:00)
+
+In conclusion, our project demonstrates that AI-driven approaches can effectively create index funds that track benchmark performance using significantly fewer stocks.
+
+The optimization approach excels at maximizing correlation, making it suitable for investors who prioritize closely matching index movements. The clustering approach achieves lower tracking error, making it appealing for risk-conscious investors who want to minimize deviation from the benchmark.
+
+Both approaches successfully tracked the S&P 100 index with as few as 15-30 stocks, confirming the viability of using AI-driven methods for index fund construction.
+
+The best performance was achieved at q=30, with correlation values of 0.956 for optimization and 0.910 for clustering, and tracking errors of 0.260 and 0.065 respectively.
+
+These methodologies represent complementary approaches with different strengths, and the choice between them would depend on the specific priorities of the fund manager or investor.
+
+Thank you for your attention. We welcome any questions or comments on our work.
